@@ -1,19 +1,62 @@
 defmodule Codex.OAuth do
   @base_url "https://www.goodreads.com/oauth"
 
-  def get_request_token_and_secret(key, secret) do
+  @doc """
+  Get a Goodreads token and token secret.
+  If signing goes well, returns `{:ok, tuple}` where tuple is a 2-element tuple containing the token and token secret.
+  Otherwise, returns `{:error, reason}`.
+
+  Your `API_KEY` and `API_SECRET` should be stored in your config, like:
+
+  ```elixir
+  config :codex,
+    api_key: "YOUR_API_KEY",
+    api_secret: "YOUR_API_SECRET"
+  ```
+
+  ## Examples
+
+      iex> Codex.OAuth.get_request_token_and_secret()
+      {"API_TOKEN", "API_TOKEN_SECRET"}
+
+  > Notice that this just obtains a token and token secret from the Goodread's OAuth service. It doesn't
+  store your token in any way or do anything else with it. You should do all your token storage and
+  management logic yourself.
+  """
+  @spec get_request_token_and_secret() :: {:ok, map()} | {:error, String.t()}
+  def get_request_token_and_secret() do
+    {key, secret} = get_goodreads_key_and_secret_from_config()
     headers = [{:Authorization, generate_oauth_header(key, secret)}]
 
     case Codex.HttpClient.get("oauth/request_token", headers) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        extract_token_and_secret(body)
+        {:ok, extract_token_and_secret(body)}
       {:error, _} = err ->
         err
     end
   end
 
-  def get_request_authorization_url(token) do
-    @base_url <> "/authorize"
+  @doc """
+  Get the authorization url, provided an OAuth token and optionally a callback URL
+
+  ## Args:
+
+  * `token` - The OAuth token obtained from Goodreads. This can be obtained by using `Codex.OAuth.get_request_token_and_secret/2`
+  * `callback_url` - Optional. A URL for your application for an endpoint to which the user should be redirected
+  after giving your app permission.
+
+  ## Examples:
+
+      iex> Codex.OAuth.get_request_authorization_url("API_TOKEN")
+      "https://www.goodreads.com/oauth/authorize?oauth_token=API_TOKEN"
+
+      iex> Codex.OAuth.get_request_authorization_url("API_TOKEN", "https://myapp.com/goodreads_oauth_callback")
+      "https://www.goodreads.com/oauth/authorize?oauth_token=API_TOKEN&oauth_callback=https://myapp.com/goodreads_oauth_callback"
+  """
+  def get_request_authorization_url(token, callback_url \\ nil)
+  def get_request_authorization_url(token, nil), do: "#{@base_url}/authorize?oauth_token=#{token}"
+  def get_request_authorization_url(token, callback_url) do
+    "#{@base_url}/authorize?oauth_token=#{token}&oauth_callback=#{callback_url}"
   end
 
   defp generate_oauth_header(key, secret) do
@@ -82,5 +125,9 @@ defmodule Codex.OAuth do
         [key, value] = String.split(pair, "="),
         into: %{},
         do: {key, value}
+  end
+
+  defp get_goodreads_key_and_secret_from_config() do
+    {Application.get_env(:codex, :api_key), Application.get_env(:codex, :api_secret)}
   end
 end
