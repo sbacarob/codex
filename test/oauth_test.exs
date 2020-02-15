@@ -9,12 +9,11 @@ defmodule OAuthTest do
   end
 
   test "get a token and token secret from Goodreads" do
+    ExVCR.Config.filter_sensitive_data("oauth_token=[^&].+&", "oauth_token=TOKEN&")
+    ExVCR.Config.filter_sensitive_data("oauth_token_secret=.+", "oauth_token_secret=TOKEN_SECRET")
+    ExVCR.Config.filter_request_headers("Authorization")
     use_cassette "get_token_and_secret" do
       # mostly test that token and token secret are extracted correctly from an ok response.
-      # the signature was generated using "YOUR_API_KEY" as :api_key  and "YOUR_API_SECRET"
-      # as :api_secret in the config. By using the same timestamp and nonce_str in the headers
-      # of the cassette, you should be able to generate the same signature.
-      # TOKEN and TOKEN_SECRET in the response were also modified from the original values.
       assert {:ok,
         %{
           "oauth_token" => "TOKEN",

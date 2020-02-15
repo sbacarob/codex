@@ -37,7 +37,7 @@ defmodule Codex.OAuth do
     {key, secret} = get_goodreads_key_and_secret_from_config()
     headers = [{:Authorization, generate_oauth_header(key, secret)}]
 
-    case HttpClient.get("oauth/request_token", headers) do
+    case HttpClient.signed_get("oauth/request_token", headers) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, extract_token_and_secret(body)}
       {:error, _} = err ->
