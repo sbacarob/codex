@@ -23,7 +23,8 @@ defmodule Codex.MixProject do
     [
       {:httpoison, "~> 1.6"},
       {:sweet_xml, "~> 0.6.6"},
-      {:jason, "~> 1.1"}
+      {:jason, "~> 1.1"},
+      {:exvcr, "~> 0.10", only: :test}
     ]
   end
 end

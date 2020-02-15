@@ -1,5 +1,14 @@
 defmodule Codex.OAuth do
-  @base_url "https://www.goodreads.com/oauth"
+  @moduledoc """
+  Handles OAuth related functionality for interaction with Goodreads API ONLY.
+
+  You should not use this OAuth client to interact with other APIs, for it doesn't do endpoint
+  discovery or anything like that. It's specifically written for Goodreads' API.
+  """
+
+  alias Codex.{Config, HttpClient}
+
+  @oauth_url Config.api_url() <> "oauth"
 
   @doc """
   Get a Goodreads token and token secret.
@@ -17,7 +26,7 @@ defmodule Codex.OAuth do
   ## Examples
 
       iex> Codex.OAuth.get_request_token_and_secret()
-      {"API_TOKEN", "API_TOKEN_SECRET"}
+      {:ok, %{"oauth_token" => "TOKEN", "oauth_token_secret" => "TOKEN_SECRET"}}
 
   > Notice that this just obtains a token and token secret from the Goodread's OAuth service. It doesn't
   store your token in any way or do anything else with it. You should do all your token storage and
@@ -28,7 +37,7 @@ defmodule Codex.OAuth do
     {key, secret} = get_goodreads_key_and_secret_from_config()
     headers = [{:Authorization, generate_oauth_header(key, secret)}]
 
-    case Codex.HttpClient.get("oauth/request_token", headers) do
+    case HttpClient.get("oauth/request_token", headers) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, extract_token_and_secret(body)}
       {:error, _} = err ->
@@ -54,9 +63,9 @@ defmodule Codex.OAuth do
       "https://www.goodreads.com/oauth/authorize?oauth_token=API_TOKEN&oauth_callback=https://myapp.com/goodreads_oauth_callback"
   """
   def get_request_authorization_url(token, callback_url \\ nil)
-  def get_request_authorization_url(token, nil), do: "#{@base_url}/authorize?oauth_token=#{token}"
+  def get_request_authorization_url(token, nil), do: "#{@oauth_url}/authorize?oauth_token=#{token}"
   def get_request_authorization_url(token, callback_url) do
-    "#{@base_url}/authorize?oauth_token=#{token}&oauth_callback=#{callback_url}"
+    "#{@oauth_url}/authorize?oauth_token=#{token}&oauth_callback=#{callback_url}"
   end
 
   defp generate_oauth_header(key, secret) do
@@ -112,7 +121,7 @@ defmodule Codex.OAuth do
     end)
   end
 
-  defp request_token_url(), do: @base_url <> "/request_token"
+  defp request_token_url(), do: @oauth_url <> "/request_token"
 
   defp sign(text, key) do
     :sha
