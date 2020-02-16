@@ -113,8 +113,6 @@ defmodule Codex.OAuth do
 
     base_string = "GET&#{URI.encode_www_form(full_url(endpoint))}&#{encoded_params}"
 
-    IO.inspect base_string
-
     {params, sign(base_string, "#{secret}&#{token_secret}")}
   end
 
