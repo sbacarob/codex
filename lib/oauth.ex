@@ -8,8 +8,6 @@ defmodule Codex.OAuth do
 
   alias Codex.{Config, HttpClient}
 
-  @oauth_url Config.api_url() <> "oauth"
-
   @doc """
   Get a Goodreads token and token secret.
   If signing goes well, returns `{:ok, tuple}` where tuple is a 2-element tuple containing the token and token secret.
@@ -34,10 +32,10 @@ defmodule Codex.OAuth do
   """
   @spec get_request_token_and_secret() :: {:ok, map()} | {:error, String.t()}
   def get_request_token_and_secret() do
-    {key, secret} = get_goodreads_key_and_secret_from_config()
-    headers = [{:Authorization, generate_oauth_header(key, secret)}]
+    endpoint = "oauth/request_token"
+    headers = [{:Authorization, generate_oauth_header(endpoint)}]
 
-    case HttpClient.signed_get("oauth/request_token", headers) do
+    case HttpClient.signed_get(endpoint, headers) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, extract_token_and_secret(body)}
       {:error, _} = err ->
@@ -63,40 +61,68 @@ defmodule Codex.OAuth do
       "https://www.goodreads.com/oauth/authorize?oauth_token=API_TOKEN&oauth_callback=https://myapp.com/goodreads_oauth_callback"
   """
   def get_request_authorization_url(token, callback_url \\ nil)
-  def get_request_authorization_url(token, nil), do: "#{@oauth_url}/authorize?oauth_token=#{token}"
+  def get_request_authorization_url(token, nil), do: "#{Config.api_url()}oauth/authorize?oauth_token=#{token}"
   def get_request_authorization_url(token, callback_url) do
-    "#{@oauth_url}/authorize?oauth_token=#{token}&oauth_callback=#{callback_url}"
+    "#{Config.api_url()}oauth/authorize?oauth_token=#{token}&oauth_callback=#{callback_url}"
   end
 
-  defp generate_oauth_header(key, secret) do
+  @doc """
+  Generate an Authorization header with a valid OAuth signature, taking the consumer key and secret
+  from the config. You may optionally pass, a token, token secret and query params.
+
+  ## Args:
+
+  * `token` - (optional) a request token previously obtained from the OAuth service.
+  * `token_secret` - (optional) a request token secret previously obtained from the OAuth service.
+  * `params` - (optional) the query params from the request, as these need to be included in the signature.
+
+  ## Examples:
+
+      iex> Codex.OAuth.generate_oauth_header("oauth/request_token")
+      "OAuth oauth_consumer_key=***,oauth_nonce=oHaBYEbXwtv7lWIoDkXMQT-I5iJThNliAls4vGDm,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1581858006,oauth_token=***,oauth_version=1.0,oauth_signature=***"
+  """
+  def generate_oauth_header(endpoint, token \\ nil, token_secret \\ nil, params \\ %{}) do
+    {key, secret} = get_goodreads_key_and_secret_from_config()
+
     key
-    |> generate_oauth_data()
-    |> generate_signature(secret)
+    |> generate_oauth_data(token, params)
+    |> generate_signature(endpoint, secret, token_secret)
     |> encode_header()
   end
 
-  defp generate_oauth_data(key) do
+  defp generate_oauth_data(key, token, params) do
     %{
       "oauth_consumer_key" => key,
       "oauth_nonce" => get_random_string(),
       "oauth_signature_method" => "HMAC-SHA1",
-      "oauth_timestamp" => get_timestamp()
+      "oauth_timestamp" => get_timestamp(),
+      "oauth_token" => token,
+      "oauth_version" => "1.0"
     }
+    |> Map.merge(params)
+    |> Enum.reject(fn {_k, v} -> is_nil(v) end)
+    |> Map.new()
   end
 
-  defp generate_signature(params, secret) do
+  defp generate_signature(params, endpoint, secret, token_secret) do
+
     encoded_params =
       params
       |> concatenate_params("&")
       |> URI.encode_www_form()
 
-    base_string = "GET&#{URI.encode_www_form(request_token_url())}&#{encoded_params}"
+    base_string = "GET&#{URI.encode_www_form(full_url(endpoint))}&#{encoded_params}"
 
-    {params, sign(base_string, secret <> "&")}
+    IO.inspect base_string
+
+    {params, sign(base_string, "#{secret}&#{token_secret}")}
   end
 
   defp encode_header({params, signature}) do
-    oauth_data = concatenate_params(params, ",")
+    oauth_data =
+      params
+      |> Map.take(oauth_params_list())
+      |> concatenate_params(",")
 
     "OAuth #{oauth_data},oauth_signature=#{signature}"
   end
@@ -121,7 +147,7 @@ defmodule Codex.OAuth do
     end)
   end
 
-  defp request_token_url(), do: @oauth_url <> "/request_token"
+  defp full_url(endpoint), do: Config.api_url() <> endpoint
 
   defp sign(text, key) do
     :sha
@@ -138,5 +164,16 @@ defmodule Codex.OAuth do
 
   defp get_goodreads_key_and_secret_from_config() do
     {Application.get_env(:codex, :api_key), Application.get_env(:codex, :api_secret)}
+  end
+
+  defp oauth_params_list do
+    [
+      "oauth_consumer_key",
+      "oauth_nonce",
+      "oauth_signature_method",
+      "oauth_timestamp",
+      "oauth_token",
+      "oauth_version"
+    ]
   end
 end

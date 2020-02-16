@@ -2,7 +2,7 @@ defmodule OAuthTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
-  doctest Codex.OAuth, except: [get_request_token_and_secret: 0]
+  doctest Codex.OAuth, except: [get_request_token_and_secret: 0, generate_oauth_header: 4]
 
   setup_all do
     HTTPoison.start
