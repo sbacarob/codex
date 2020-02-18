@@ -10,4 +10,21 @@ defmodule Codex do
   for most cases, you probably will be using those. So, I strongly suggest you do consider those options
   first.
   """
+
+  alias Codex.{HttpClient, OAuth}
+
+  @doc """
+  call a given endpoint using auth, passing the access token and access token secret.
+
+  ## Args:
+
+  * `endpoint` - the endpoint to call. No leading "/". e.g. "api/auth_user".
+  * `token` - the access token previously obtained from Goodreads.
+  * `token_secret` - the access token secret previously obtained from Goodreads.
+  """
+  def signed_request(endpoint, token, token_secret) do
+    headers = [{:Authorization, OAuth.generate_oauth_header(endpoint, token, token_secret)}]
+
+    HttpClient.signed_get(endpoint, headers)
+  end
 end

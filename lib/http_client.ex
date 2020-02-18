@@ -50,6 +50,12 @@ defmodule Codex.HttpClient do
     )
   end
 
+  def process_response(%HTTPoison.Response{status_code: 200, body: body}) do
+    body
+  end
+  def process_response(%HTTPoison.Response{} = response), do: response
+  def process_response(err), do: err
+
   defp get_api_key, do: get_app_env(:api_key)
 
   defp get_app_env(key), do: Application.get_env(:codex, key)

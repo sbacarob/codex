@@ -1,0 +1,39 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/api/auth_user"
+    },
+    "response": {
+      "binary": false,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key>[CDATA[YOUR_API_KEY]]</key>\n    <method><![CDATA[api_auth_user]]></method>\n  </Request>\n  <user id=\"91535552\">\n  <name>Santiago Bacaro</name>\n  <link><![CDATA[https://www.goodreads.com/user/show/91535552-santiago-bacaro?utm_medium=api]]></link>\n</user>\n\n</GoodreadsResponse>",
+      "headers": {
+        "Server": "Server",
+        "Date": "Tue, 18 Feb 2020 18:54:49 GMT",
+        "Content-Type": "application/xml; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Status": "200 OK",
+        "X-Frame-Options": "ALLOWALL",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "ETag": "W/\"92a6b7a22b1cc23f99489fa32a8a6ddc\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "8V4PWMZAVGDSNKT0EYWY",
+        "X-Runtime": "0.083152",
+        "Set-Cookie": "ccsid=115-6633431-2043684; path=/; expires=Sat, 18 Feb 2040 18:54:49 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "8V4PWMZAVGDSNKT0EYWY"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
