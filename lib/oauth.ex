@@ -36,7 +36,7 @@ defmodule Codex.OAuth do
     headers = [{:Authorization, generate_oauth_header(endpoint)}]
 
     case HttpClient.signed_get(endpoint, headers) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+      {:ok, body} ->
         {:ok, extract_token_and_secret(body)}
       {:error, _} = err ->
         err
@@ -64,6 +64,35 @@ defmodule Codex.OAuth do
   def get_request_authorization_url(token, nil), do: "#{Config.api_url()}oauth/authorize?oauth_token=#{token}"
   def get_request_authorization_url(token, callback_url) do
     "#{Config.api_url()}oauth/authorize?oauth_token=#{token}&oauth_callback=#{callback_url}"
+  end
+
+  @doc """
+  Exchange the request token and secret for an access token and secret. In order for this to work,
+  the user should have provided access to your application via the authorization URL, which can be
+  obtained using `Codex.OAuth.get_request_authorization_url`.
+
+  ## Args:
+
+  * `request_token` - the initial request token.
+  * `request_token_secret` - the initial request token secret.
+
+  An initial request token and token secret can be obtained by calling `Codex.OAuth.get_request_token_and_secret/0`.
+
+  ## Examples:
+
+      iex> Codex.OAuth.get_access_token_and_secret("REQUEST_TOKEN", "REQUEST_TOKEN_SECRET")
+      {:ok, %{"oauth_token" => "ACCESS_TOKEN", "oauth_token_secret" => "ACCESS_TOKEN_SECRET"}}
+  """
+  def get_access_token_and_secret(request_token, request_token_secret) do
+    endpoint = "oauth/access_token"
+    headers = [{:Authorization, generate_oauth_header(endpoint, request_token, request_token_secret)}]
+
+    case HttpClient.signed_get(endpoint, headers) do
+      {:ok, body} ->
+        {:ok, extract_token_and_secret(body)}
+      {:error, _} = err ->
+        err
+    end
   end
 
   @doc """
