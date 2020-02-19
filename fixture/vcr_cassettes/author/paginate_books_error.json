@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/author/list.xml?key=&id=84825&page=1"
+    },
+    "response": {
+      "binary": false,
+      "body": "Invalid API key.\n<!-- This is a random-length HTML comment: wxfyorbrpuzrvnguygyazzzugclfdsgjchnwtdefchbtuvbzkfmruhmcrniukjljkrumshzlwiegjaxzqeeae -->",
+      "headers": {
+        "Server": "Server",
+        "Date": "Wed, 19 Feb 2020 22:49:20 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "149",
+        "Connection": "keep-alive",
+        "Status": "401 Unauthorized",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Vary": "User-Agent,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "WWW-Authenticate": "OAuth realm=\"https://www.goodreads.com\"",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "HTTRZ197E4FKK7BV1HVC",
+        "X-Runtime": "0.031603",
+        "Set-Cookie": "ccsid=019-3735007-3850060; path=/; expires=Sun, 19 Feb 2040 22:49:20 -0000",
+        "x-amz-rid": "HTTRZ197E4FKK7BV1HVC"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]
