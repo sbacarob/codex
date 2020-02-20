@@ -33,7 +33,7 @@ defmodule Codex.AuthorTest do
       end
     end
 
-    test "fails when config is missing" do
+    test "returns 401 error when config is missing" do
       ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
       ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
       use_cassette "author/paginate_books_error" do
@@ -61,11 +61,36 @@ defmodule Codex.AuthorTest do
       end
     end
 
-    test "fails when config is missing" do
+    test "returns 401 error when config is missing" do
       ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
       ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
       use_cassette "author/get_info_by_id_error" do
         assert {:ok, response} = Author.info_by_id(84825)
+
+        assert response.status_code == 401
+        assert response.body =~ "Invalid API key"
+      end
+    end
+  end
+
+  describe "find by name" do
+    test "retrieves info about an author given a name for the author" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "author/find_by_name" do
+        assert {:ok, author_data} = Author.find_by_name("Jorge Franco")
+
+        assert author_data =~ "<authentication>true</authentication>"
+        assert author_data =~ "Jorge Franco"
+        assert author_data =~ "<author id=\"84825\">"
+      end
+    end
+
+    test "returns 401 error when config is missing" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "author/find_by_name_error" do
+        assert {:ok, response} = Author.find_by_name("Jorge Franco")
 
         assert response.status_code == 401
         assert response.body =~ "Invalid API key"

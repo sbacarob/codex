@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/api/author_url/Jorge Franco?key=YOUR_API_KEY"
+    },
+    "response": {
+      "binary": false,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key>[CDATA[YOUR_API_KEY]]</key>\n    <method><![CDATA[api_author_link]]></method>\n  </Request>\n  \n\n\t\t<author id=\"84825\">\n\t\t\t<name><![CDATA[Jorge Franco]]></name>\n\t\t\t<link>https://www.goodreads.com/author/show/84825.Jorge_Franco?utm_medium=api&amp;utm_source=author_link</link>\n\t\t</author>\n\t\n\t\n\n</GoodreadsResponse>",
+      "headers": {
+        "Server": "Server",
+        "Date": "Thu, 20 Feb 2020 19:14:13 GMT",
+        "Content-Type": "application/xml; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Status": "200 OK",
+        "X-Frame-Options": "ALLOWALL",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "ETag": "W/\"8ca52c9fc6582cb8cd52944fffce8918\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "JQVTKJJEEZHC3E0G6ZTP",
+        "X-Runtime": "0.127037",
+        "Set-Cookie": "ccsid=529-0346120-6787699; path=/; expires=Mon, 20 Feb 2040 19:14:13 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "JQVTKJJEEZHC3E0G6ZTP"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

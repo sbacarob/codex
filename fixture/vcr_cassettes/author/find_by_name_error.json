@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/api/author_url/Jorge Franco?key="
+    },
+    "response": {
+      "binary": false,
+      "body": "Invalid API key.\n<!-- This is a random-length HTML comment: kxokckrrvxrweeamihsaxqhvqoldtufaoulwbskafmqgsfyvofpkvnsbbwjfbyrznayfmebakcbdtdsqlzstaimeskcnvuwsenzjcoxnzhxzlwlprkflhosjiyklnthxjzveqqegqgzfkzdjqhatrbtldorfelyvitshcuzmzpxnazkhgsxjsauuaceolutkwjdtowzmtxmsusnliahztaqfszuzrwnhvwrsuspqhjckqgragkwndbxixfxbogooysdnwtltbwtfaefvrfnxvissznkfjqwcefwbwbayzynehqkvhpxajdgrdkvklvsutivpqhxqqocqvbrtccznpxuxxivdmypifibivewwtkphppdcuuawicraejhwcbptdhwhbntgxdpvtjkmcbyhuicmmvxlhcwsvgzznijrdzhuojarjppvtwqsnjeevztjruxhjvxvbwafxtdkzjwxylwubushojeposrbafvsblpojmtitcziwtzspskxqqdxvvspfbuntjhwxvbjgjeqhqvbfvaaozennossanpctjywvnwwttyonealtgnnmnfblwahitgyulbnpfqclmwqiifktbqzexnoneyhlmhdlmkeklzfxmobshgatnnqbyodziwroqkqdh -->",
+      "headers": {
+        "Server": "Server",
+        "Date": "Thu, 20 Feb 2020 19:22:03 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "714",
+        "Connection": "keep-alive",
+        "Status": "401 Unauthorized",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "WWW-Authenticate": "OAuth realm=\"https://www.goodreads.com\"",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "33SGR7HYRHQ3RZFYZ0R9",
+        "X-Runtime": "0.046057",
+        "Set-Cookie": "ccsid=158-5033952-6235735; path=/; expires=Mon, 20 Feb 2040 19:22:03 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "33SGR7HYRHQ3RZFYZ0R9"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]

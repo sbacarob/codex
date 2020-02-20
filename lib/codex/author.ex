@@ -44,4 +44,18 @@ defmodule Codex.Author do
 
     HttpClient.get(endpoint, [], params: %{"id" => author_id})
   end
+
+  @doc """
+  Get info about an author given their Goodreads id.
+
+  ## Args:
+
+  * `name` - The name of the author to search for.
+
+  ## Examples:
+
+      iex> Codex.Author.find_by_name("Jorge Franco")
+      {:ok, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key><![CDATA[YOUR_API_KEY]]></key>\n    <method><![CDATA[api_author_link]]></method>\n  </Request>\n  \n\n\t\t<author id=\"84825\">\n\t\t\t<name><![CDATA[Jorge Franco]]></name>\n\t\t\t<link>https://www.goodreads.com/author/show/84825.Jorge_Franco?utm_medium=api&amp;utm_source=author_link</link>\n\t\t</author>\n\t\n\t\n\n</GoodreadsResponse>"}
+  """
+  def find_by_name(name), do: HttpClient.get("api/author_url/#{name}")
 end
