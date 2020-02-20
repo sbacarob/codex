@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/author/show.xml?key=&id=84825"
+    },
+    "response": {
+      "binary": false,
+      "body": "Invalid API key.\n<!-- This is a random-length HTML comment: wnyecbwctxzaoitjhtdwkczsbgscwixmllneddvflmicrghifocljosnatpwqhucmhamyyiyitutbuqmenugjehcdjufkpaqetqohhfhrfrlezcpkovbnpuquvlkrrypquvklllpmuettcxcyfxkkzsugajvxsksteqiraxvtdgnbxvyqwwznkwztdeligijqntwtoyewuddspnwxklpjcwekrhvcvdxtwyrdjrurmtzenlcweznchvnedaupegsbbxuqtnxgjvitroillcwlvzbxvgskhjpjwrwimxawfmccijpgjuyzbzccdxkorstdyffgxnkvthgobxjnljtkkklgpzmqpyvjbkwevgizrpmcfnqmxthhdcyuxxeddgfewrwdekelortyldanpvjelbatanobgzhkyihsnonwbhaayvxrrredgycbtqdtwjkwtrdjhyytmggennylduljsvaszzcgmafxtlfkfhpnnooquypmfbtkhythxgqokmhyphfbfgetuxgclthcnkpzxaqoczzwbndnznbxhfxyuzytpqsytzflistuchfckahugqkxrxjsnacctrwnzxjptwpywoyurvnsbzhluwvkwrfuaruugniyfoyijplhecbgwxemoaupazbfygyrpfvjtjzgjslwnarvefnjgdvqnafiwsjqnpdhxrvidzlvlcnglgdyczeqbinjjebweccoyjbakseajdrtcnwyyxoiiffilnfcyzliqemvxxvrpiaejwfteiyqawiowtkcslqpgdalcdugprizvpdnzhmmpqzmzobcprkqupndaoltqnspqhsbvbwmnqwtnzhzrplvhjcrdcqjucfomadpsxpwdfukhswzhjppxwgktnzvrlavnmwyywpebwqgcliebahmfzxmubuaigwwyiwehzkefjddvfjkytxdfujonhigpsmjcipnfindlnvlunmzzuon -->",
+      "headers": {
+        "Server": "Server",
+        "Date": "Thu, 20 Feb 2020 18:45:05 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "1045",
+        "Connection": "keep-alive",
+        "Status": "401 Unauthorized",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Vary": "User-Agent,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "WWW-Authenticate": "OAuth realm=\"https://www.goodreads.com\"",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "KG4CMFNAXHX2P7VKNVGM",
+        "X-Runtime": "0.043293",
+        "Set-Cookie": "ccsid=287-1673394-8791692; path=/; expires=Mon, 20 Feb 2040 18:45:05 -0000",
+        "x-amz-rid": "KG4CMFNAXHX2P7VKNVGM"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]

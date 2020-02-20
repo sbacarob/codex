@@ -44,4 +44,32 @@ defmodule Codex.AuthorTest do
       end
     end
   end
+
+  describe "info by id" do
+    test "retrieves info about an author given the author id" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "author/get_info_by_id" do
+        assert {:ok, author_data} = Author.info_by_id(84825)
+
+        assert author_data =~ "<authentication>true</authentication>"
+        assert author_data =~ "<name>Jorge Franco</name>"
+        assert author_data =~ "<id>84825</id>"
+        assert author_data =~ "<books>"
+        assert author_data =~ "Premio Alfaguara 2014"
+        assert author_data =~ "born in Colombia"
+      end
+    end
+
+    test "fails when config is missing" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "author/get_info_by_id_error" do
+        assert {:ok, response} = Author.info_by_id(84825)
+
+        assert response.status_code == 401
+        assert response.body =~ "Invalid API key"
+      end
+    end
+  end
 end
