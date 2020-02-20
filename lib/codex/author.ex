@@ -46,7 +46,7 @@ defmodule Codex.Author do
   end
 
   @doc """
-  Get info about an author given their Goodreads id.
+  Find an author's Goodreads info given the author's name.
 
   ## Args:
 
@@ -58,4 +58,23 @@ defmodule Codex.Author do
       {:ok, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key><![CDATA[YOUR_API_KEY]]></key>\n    <method><![CDATA[api_author_link]]></method>\n  </Request>\n  \n\n\t\t<author id=\"84825\">\n\t\t\t<name><![CDATA[Jorge Franco]]></name>\n\t\t\t<link>https://www.goodreads.com/author/show/84825.Jorge_Franco?utm_medium=api&amp;utm_source=author_link</link>\n\t\t</author>\n\t\n\t\n\n</GoodreadsResponse>"}
   """
   def find_by_name(name), do: HttpClient.get("api/author_url/#{name}")
+
+  @doc """
+  Get a list of an author's series.
+
+  ## Args:
+
+  * `author_id` - The Goodreads id of the author
+
+  ## Examples:
+
+      iex> Codex.Author.list_series(1077326)
+      {:ok, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key><![CDATA[YOUR_API_KEY]]></key>\n    <method><![CDATA[series_list]]></method>\n  </Request>\n  <series_works>\n<series_work>\n<id>1232928</id>\n<user_position>1</user_position>\n<series>\n<id>234280</id>\n<title>\n<![CDATA[\n    Fantastic Beasts: The Original Screenplay\n]]>\n</title>\n<description>\n<![CDATA[\n]]>\n</description>\n<note>\n<![CDATA[\n]]>\n</note>\n<series_works_count>3</series_works_count>\n<primary_work_count>3</primary_work_count>\n<numbered>true</numbered>\n</series>\n\n<work>\n<id>50435175</id>\n<uri>kca://work/amzn1.gr.work.v1.ZmCTsnX3vM_RdvrhOmOqqQ</uri>\n<best_book>\n<id>29363501</id>\n<title>Fantastic Beasts and Where to Find Them: The Original Screenplay (Fantastic Beasts: The Original Screenplay, #1)</title>\n<author>\n<id>1077326</id>\n<name>J.K. Rowling</name>\n</author>\n<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1481542648l/29363501._SX98_.jpg]]></image_url>\n</best_book>\n<books_count>84</books_count>\n<original_publication_day>18</original_publication_day>\n<original_publication_month>11</original_publication_month>\n<original_publication_year>2016</original_publication_year>\n<original_title>Fantastic Beasts and Where to Find Them: The Original Screenplay</original_title>\n<ratings_count>108975</ratings_count>\n<ratings_sum>465112</ratings_sum>\n<reviews_count>277066</reviews_count>\n<text_reviews_count>7352</text_reviews_count>\n<average_rating></average_rating>\n</work>\n\n</series_work>\n<series_work>\n<id>1128815</id>\n<user_position></user_position>\n<series>\n<id>217773</id>\n<title>\n<![CDATA[\n    Harry Potter: A History of Magic Exhibition\n]]>\n</title>\n<description>\n<![CDATA[\n    British Library companions to the <i>Harry Potter: A History of Magic</i> exhibition held in London during 2017.\n]]>\n</description>\n<note>\n<![CDATA[\n]]>\n</note>\n<series_works_count>2</series_works_count>\n<primary_work_count>2</primary_work_count>\n<numbered>false</numbered>\n</series>\n\n<work>\n<id>57209294</id>\n<uri>kca://work/amzn1.gr.work.v1.bj3m1A5Rxkzf-dbiLrI3-A</uri>\n<best_book>\n<id>35613533</id>\n<title>Harry Potter: A History of Magic</title>\n<author>\n<id>208338</id>\n<name>British Library</name>\n</author>\n<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1500670913l/35613533._SX98_.jpg]]></image_url>\n</best_book>\n<books_count>14</books_count>\n<original_publication_day>20</original_publication_day>\n<original_publication_month>10</original_publication_month>\n<original_publication_year>2017</original_publication_year>\n<original_title>Harry Potter: A History of Magic</original_title>\n<ratings_count>11024</ratings_count>\n<ratings_sum>46518</ratings_sum>\n<reviews_count>36322</reviews_count>\n<text_reviews_count>590</text_reviews_count>\n<average_rating></average_rating>\n</work>\n\n</series_work>\n<series_work>\n<id>966943</id>\n<user_position>1A</user_position>\n<series>\n<id>189486</id>\n<title>\n<![CDATA[\n    Harry Potter Korean Split-Volume Paperback\n]]>\n</title>\n<description>\n<![CDATA[\n    In South Korea, <i>Harry Potter</i> is split into <b>a different number of volumes</b> for hardbacks. The first 4 <i>Harry Potter</i> books are NOT split for the Korean hardback edition, whereas books 5-7 are all split into 2 volumes per book.\n]]>\n</description>\n<note>\n<![CDATA[\n    partial books are 1A, 1B, etc., NOT 1.1, 1.2\n]]>\n</note>\n<series_works_count>23</series_works_count>\n<primary_work_count>23</primary_work_count>\n<numbered>true</numbered>\n</series>\n\n<work>\n<id>19126692</id>\n<uri>kca://work/amzn1.gr.work.v1.Ggs3dojlMyYqmcW1X48Shg</uri>\n<best_book>\n<id>49812</id>\n<title>해리 포터와 마법사의 돌 1 (Harry Potter #1, part 1 of 2)</title>\n<author>\n<id>1077326</id>\n<name>J.K. Rowling</name>\n</author>\n<image_url><![CDATA[https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1473814446l/49812._SX98_.jpg]]></image_url>\n</best_book>\n<books_count>3</books_count>\n<original_publication_day>1</original_publication_day>\n<original_publication_month>1</original_publicati" <> ...}
+
+  """
+  def list_series(author_id) do
+    endpoint = "series/list"
+
+    HttpClient.get(endpoint, [], params: %{"format" => "xml", "id" => author_id})
+  end
 end

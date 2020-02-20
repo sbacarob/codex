@@ -97,4 +97,29 @@ defmodule Codex.AuthorTest do
       end
     end
   end
+
+  describe "list series" do
+    test "retrieves a list of series of an author" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "author/list_series" do
+        assert {:ok, author_data} = Author.list_series(1077326)
+
+        assert author_data =~ "<authentication>true</authentication>"
+        assert author_data =~ "Fantastic Beasts"
+        assert author_data =~ "Harry Potter"
+      end
+    end
+
+    test "returns 401 error when config is missing" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "author/list_series_error" do
+        assert {:ok, response} = Author.list_series(1077326)
+
+        assert response.status_code == 401
+        assert response.body =~ "Invalid API key"
+      end
+    end
+  end
 end
