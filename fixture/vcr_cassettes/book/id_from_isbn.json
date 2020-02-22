@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/isbn_to_id?key=YOUR_API_KEYisbn=9780553286526"
+    },
+    "response": {
+      "binary": false,
+      "body": "828165",
+      "headers": {
+        "Server": "Server",
+        "Date": "Sun, 23 Feb 2020 21:44:44 GMT",
+        "Content-Type": "application/xml; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Status": "200 OK",
+        "X-Frame-Options": "ALLOWALL",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "ETag": "W/\"bac1e11716d5f0e96f198e5cac7f29a0\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "QK9B7A4ZMPG0WWVRG17Q",
+        "X-Runtime": "0.046577",
+        "Set-Cookie": "ccsid=019-1591619-7796311; path=/; expires=Thu, 23 Feb 2040 21:44:44 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "QK9B7A4ZMPG0WWVRG17Q"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
