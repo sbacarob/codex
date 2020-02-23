@@ -36,4 +36,31 @@ defmodule Codex.Book do
 
     HttpClient.get(endpoint, [], params: %{"isbn" => Enum.join(isbn, ",")})
   end
+
+  @doc """
+  Get a book's Goodreads work id given its Goodreads book id
+
+  ## Args:
+
+  * `id` - The Goodreads id of the book. You may also pass a list of book ids as a List or in a
+  single string, separated by commas.
+
+  ## Examples:
+
+      iex> Codex.Book.id_to_work_id("828165")
+      {:ok, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key><![CDATA[YOUR_API_KEY]]></key>\n    <method><![CDATA[book_id_to_work_id]]></method>\n  </Request>\n  <work-ids>\n    <item>509736</item>\n</work-ids>\n\n</GoodreadsResponse>"}
+
+      iex> Codex.Book.id_to_work_id(["828165", "1845", "46132"])
+      {:ok, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key><![CDATA[YOUR_API_KEY]]></key>\n    <method><![CDATA[book_id_to_work_id]]></method>\n  </Request>\n  <work-ids>\n    <item>509736</item>\n    <item>3284484</item>\n    <item>841320</item>\n</work-ids>\n\n</GoodreadsResponse>"}
+
+      iex> Codex.Book.id_to_work_id("828165,1845,46132")
+      {:ok, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key><![CDATA[YOUR_API_KEY]]></key>\n    <method><![CDATA[book_id_to_work_id]]></method>\n  </Request>\n  <work-ids>\n    <item>509736</item>\n    <item>3284484</item>\n    <item>841320</item>\n</work-ids>\n\n</GoodreadsResponse>"}
+  """
+  def id_to_work_id(book_id) when is_binary(book_id) do
+    HttpClient.get("book/id_to_work_id/#{book_id}")
+  end
+
+  def id_to_work_id(book_id) when is_list(book_id) do
+    HttpClient.get("book/id_to_work_id/#{Enum.join(book_id, ",")}")
+  end
 end

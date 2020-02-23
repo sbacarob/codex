@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/id_to_work_id/828165,1845,46132?key=YOUR_API_KEY"
+    },
+    "response": {
+      "binary": false,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GoodreadsResponse>\n  <Request>\n    <authentication>true</authentication>\n      <key>[CDATA[YOUR_API_KEY]]</key>\n    <method><![CDATA[book_id_to_work_id]]></method>\n  </Request>\n  <work-ids>\n    <item>509736</item>\n    <item>3284484</item>\n    <item>841320</item>\n</work-ids>\n\n</GoodreadsResponse>",
+      "headers": {
+        "Server": "Server",
+        "Date": "Sun, 23 Feb 2020 22:56:18 GMT",
+        "Content-Type": "application/xml; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Status": "200 OK",
+        "X-Frame-Options": "ALLOWALL",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "ETag": "W/\"84213c45f412c6f11ccf68cc5dc2f5ed\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "D7W88X7PT1G62HQ310Q6",
+        "X-Runtime": "0.077441",
+        "Set-Cookie": "ccsid=290-4861420-0071237; path=/; expires=Thu, 23 Feb 2040 22:56:18 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "D7W88X7PT1G62HQ310Q6"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

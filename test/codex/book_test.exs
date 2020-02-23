@@ -59,4 +59,57 @@ defmodule Codex.BookTest do
       end
     end
   end
+
+  describe "id to work id" do
+    test "returns an XML response containing the work id of a book given its Goodreads book id" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&?", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/id_to_work_id" do
+        assert {:ok, data} = Book.id_to_work_id("828165")
+
+        assert data =~ "<authentication>true</authentication>"
+        assert data =~ "book_id_to_work_id"
+        assert data =~ "<item>509736</item>"
+      end
+    end
+
+    test "returns an XML response containing the Goodreads work ids for the different given book ids" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&?", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/id_to_work_id_list" do
+        assert {:ok, data} = Book.id_to_work_id(["828165", "1845", "46132"])
+
+        assert data =~ "<authentication>true</authentication>"
+        assert data =~ "book_id_to_work_id"
+        assert data =~ "<item>509736</item>"
+        assert data =~ "<item>3284484</item>"
+        assert data =~ "<item>841320</item>"
+      end
+    end
+
+    test "returns an XML response containing the Goodreads work ids when passed ids in single string" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&?", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/id_to_work_id_list" do
+        assert {:ok, data} = Book.id_to_work_id("828165,1845,46132")
+
+        assert data =~ "<authentication>true</authentication>"
+        assert data =~ "book_id_to_work_id"
+        assert data =~ "<item>509736</item>"
+        assert data =~ "<item>3284484</item>"
+        assert data =~ "<item>841320</item>"
+      end
+    end
+
+    test "returns 406 error when api key is missing" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/id_to_work_id_error" do
+        assert {:ok, response} = Book.id_to_work_id("828165")
+
+        assert response.status_code == 406
+        assert response.body == ""
+      end
+    end
+  end
 end
