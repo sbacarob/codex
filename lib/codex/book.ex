@@ -63,4 +63,31 @@ defmodule Codex.Book do
   def id_to_work_id(book_id) when is_list(book_id) do
     HttpClient.get("book/id_to_work_id/#{Enum.join(book_id, ",")}")
   end
+
+  @doc """
+  Gets review statistics given an ISBN or a list of ISBNs. Up to 1000 per request
+
+  ## Args:
+
+  * `isbn` - an ISBN or list of ISBNs to get review statistics for.
+
+  ## Examples:
+
+      iex> Codex.Book.review_statistics_by_isbn("9783730601631")
+      {:ok, "{\"books\":[{\"id\":25408685,\"isbn\":\"3730601636\",\"isbn13\":\"9783730601631\",\"ratings_count\":8,\"reviews_count\":1,\"text_reviews_count\":3,\"work_ratings_count\":52104,\"work_reviews_count\":116539,\"work_text_reviews_count\":3334,\"average_rating\":\"3.87\"}]}"}
+
+      iex> Codex.Book.review_statistics_by_isbn(["9783730601631", "9780553213881"])
+      {:ok, "{\"books\":[{\"id\":25408685,\"isbn\":\"3730601636\",\"isbn13\":\"9783730601631\",\"ratings_count\":8,\"reviews_count\":1,\"text_reviews_count\":3,\"work_ratings_count\":52104,\"work_reviews_count\":116539,\"work_text_reviews_count\":3334,\"average_rating\":\"3.87\"},{\"id\":123847,\"isbn\":\"0553213881\",\"isbn13\":\"9780553213881\",\"ratings_count\":248,\"reviews_count\":693,\"text_reviews_count\":13,\"work_ratings_count\":271,\"work_reviews_count\":800,\"work_text_reviews_count\":16,\"average_rating\":\"4.06\"}]}"}
+  """
+  def review_statistics_by_isbn(isbn) when is_binary(isbn) do
+    endpoint = "book/review_counts.json"
+
+    HttpClient.get(endpoint, [], params: %{"isbns" => isbn, "format" => "json"})
+  end
+
+  def review_statistics_by_isbn(isbn) when is_list(isbn) do
+    endpoint = "book/review_counts.json"
+
+    HttpClient.get(endpoint, [], params: %{"isbns" => Enum.join(isbn, ","), "format" => "json"})
+  end
 end

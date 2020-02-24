@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/review_counts.json?key=YOUR_API_KEY&format=json&isbns=9780385486804%2C9780553286526"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"books\":[{\"id\":1845,\"isbn\":\"0385486804\",\"isbn13\":\"9780385486804\",\"ratings_count\":800832,\"reviews_count\":1281519,\"text_reviews_count\":18214,\"work_ratings_count\":828485,\"work_reviews_count\":1328949,\"work_text_reviews_count\":20599,\"average_rating\":\"3.98\"},{\"id\":828165,\"isbn\":\"0553286528\",\"isbn13\":\"9780553286526\",\"ratings_count\":2641,\"reviews_count\":6532,\"text_reviews_count\":317,\"work_ratings_count\":2954,\"work_reviews_count\":7245,\"work_text_reviews_count\":365,\"average_rating\":\"4.14\"}]}",
+      "headers": {
+        "Server": "Server",
+        "Date": "Sat, 29 Feb 2020 22:28:07 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Status": "200 OK",
+        "X-Frame-Options": "ALLOWALL",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "ETag": "W/\"f62f27be43335f9b22f9a5ab4b44c674\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "PHR41TBMV9BDQ1ZJZVTA",
+        "X-Runtime": "0.063604",
+        "Set-Cookie": "ccsid=114-9797019-4901847; path=/; expires=Wed, 29 Feb 2040 22:28:07 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "PHR41TBMV9BDQ1ZJZVTA"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

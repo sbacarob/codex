@@ -112,4 +112,33 @@ defmodule Codex.BookTest do
       end
     end
   end
+
+  describe "review statistics by ISBN" do
+    test "gets review statistics for a single book" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      use_cassette "book/review_statistics_by_isbn" do
+        assert {:ok, response} = Book.review_statistics_by_isbn("9780385486804")
+
+        assert response =~ "\"isbn13\":\"9780385486804\""
+        assert response =~ "\"id\":1845"
+        assert response =~ "\"average_rating\":\"3.98\""
+      end
+    end
+
+    test "gets review statistics for a list of books" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+
+      use_cassette "book/multiple_review_statsitics_by_isbn" do
+        assert {:ok, response} = Book.review_statistics_by_isbn(["9780385486804", "9780553286526"])
+
+        assert response =~ "\"isbn13\":\"9780385486804\""
+        assert response =~ "\"id\":1845"
+        assert response =~ "\"average_rating\":\"3.98\""
+
+        assert response =~ "\"isbn13\":\"9780553286526\""
+        assert response =~ "\"id\":828165"
+        assert response =~ "\"average_rating\":\"4.14\""
+      end
+    end
+  end
 end
