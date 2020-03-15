@@ -176,4 +176,39 @@ defmodule Codex.BookTest do
       end
     end
   end
+
+  describe "reviews by ISBN" do
+    test "gets an XML response with reviews for a book given its ISBN" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&?", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/reviews_by_isbn" do
+        assert {:ok, data} = Book.reviews_by_isbn("0553286528")
+
+        assert data =~ "<authentication>true</authentication>"
+        assert data =~ "<id>828165</id>"
+        assert data =~ "<title>Education of a Wandering Man</title>"
+      end
+    end
+
+    test "returns a JSON widget when specified the JSON format" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&?", "key=YOUR_API_KEY")
+      use_cassette "book/json_reviews_by_isbn" do
+        assert {:ok, data} = Book.reviews_by_isbn("0553286528", format: "json")
+
+        assert data =~ "\"reviews_widget\":"
+        assert data =~ "828165"
+      end
+    end
+
+    test "returns 406 error when api key is missing" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/error_reviews_by_isbn" do
+        assert {:ok, response} = Book.reviews_by_isbn("0553286528")
+
+        assert response.status_code == 401
+        assert response.body =~ "Invalid API key"
+      end
+    end
+  end
 end
