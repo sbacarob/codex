@@ -211,4 +211,42 @@ defmodule Codex.BookTest do
       end
     end
   end
+
+  describe "reviews by title string" do
+    test "gets an XML response with reviews for a book given a title string" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&?", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/reviews_by_title_string" do
+        assert {:ok, data} = Book.reviews_by_title_string("Rosario Tijeras")
+
+        assert data =~ "<authentication>true</authentication>"
+        assert data =~ "<id>171327</id>"
+        assert data =~ "<title>Rosario Tijeras</title>"
+      end
+    end
+
+    test "passing the author's name helps filter out results" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&?", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/reviews_by_title_string_with_author_name" do
+        assert {:ok, data} = Book.reviews_by_title_string("larga noche", author: "Santiago Gamboa")
+
+        assert data =~ "<authentication>true</authentication>"
+        assert data =~ "<id>48140839</id>"
+        assert data =~ "<title>Será larga la noche</title>"
+        assert data =~ "<name>Santiago Gamboa</name>"
+      end
+    end
+
+    test "returns 401 error when api key is missing" do
+      ExVCR.Config.filter_sensitive_data("key=[^&]+&", "key=YOUR_API_KEY")
+      ExVCR.Config.filter_sensitive_data("<key>.*<\/key>", "<key>[CDATA[YOUR_API_KEY]]</key>")
+      use_cassette "book/error_reviews_by_title_string_error" do
+        assert {:ok, response} = Book.reviews_by_title_string("Rosario Tijeras")
+
+        assert response.status_code == 401
+        assert response.body =~ "Invalid API key"
+      end
+    end
+  end
 end
