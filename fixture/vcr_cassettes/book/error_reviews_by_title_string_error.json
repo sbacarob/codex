@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/title.xml?key=&title=Rosario+Tijeras"
+    },
+    "response": {
+      "binary": false,
+      "body": "Invalid API key.\n<!-- This is a random-length HTML comment: iklpvvhsexdeusbuzwrnuzvfkwzrmhwxcuewnazepqorjbzryxmsopiowxcsjnducapuswwjuwueohfzqxanxcpqdnzmmlrmflfwjehslyhreevxrizctvygngobzeturjkpqluedhezyvbjmteauqyyuzbxxdtprtblivsrlbziqkmnxgejjunqmbxidfxdcrxqswgxkvpunnynosxetfvzemdeeujawtqdkzhtkozjpvjwgmizylsbgzvioxkwhulikbodqvelyrnjfocrxgsogljqipqjfypapkudpfnxxpgeskvxjdneqayemlmnvlipfbngcooebxdvqjwqxwkebxvqkvjjonlwdtpdtjctshkkbizuldphtsdicbjlfqiubyujxqfefvoatvooqcxwvrbympppurpuwhwoobvysoltbhptsjingtaolqnnzaeexxtfitpgrrazafysspgysdccpkncssbucpqbgyfghryatufdizkjbpilbkgpbwdozxstpdtzgnynnkasdkghdzxzysvlwkstttoivdzyydjizcpgiqljxmgkonomifmqbxzlecwztoeezlyzbdgleelytbibydrzvqydbnrxwanmtpqczmwvxcumcegypknjooovffrqkimplaoxzdxrtitzvayauilifwcwhvdxjgbdvwrjhicxvmtwtwlogiucwsrsgmtokurxiueufriskhqvshcdbokyvnstkotigqkqlapnfnzdrfxpoevlmwlmnpmeoyseywuqxnborxhqwhupoumqjtoqboyqjsbaknvbdchpbggohxykybzsexeuxljhjmsvksqpgbqqdynxcmtebrpqdqfxcnvcnsfwpjpfuejpliboupuhzssbwsyheuvtdfrtncrbgncjdmvocghfcmjlsjcdenncchavlfpluqepvbonlxhtxhdrtnykztqhigomtaghrslboskozogqcrxuidmncvrlfdodacegqihsgjijdrrljyecjxpefsiednwhjfmkcmwykygrnqcaqcixkjjxbwzbbmcsesjeyiukrywmwotirrafbxxdryzzqwydkxwenlblfmhrgfbfhahrzxznxaefgsegtzdehllwlkfptaavyudwiftgfdogkhwmyireivlfbvspjvlafayfeuffqglxtwscutmfigcssatnbvndvopbkotrjlzpwdlcmpxytwhgilydmicebjzutjuewrhjfzaiitisemfwocylwiyapnhwpouhqnsrndwtpbaofppffzpfdtdcriglfpmfzuehcwdmfsakskqrfjzicddeazodkoddabxsovnpijwxfmxjxniiqqicwfbwlgsohtzydypvyilyjlvydatgfwpmjvomgfpvzwpknxycfufngsqsiakbvqorzdwshszkzfqugcxctcqpevmxjrfxkrlykgekgbzyujwjcuehrzrdspslyqkdeuakmeisghqxzqvflhqrvllhejcpsqdlswvcyhmqjskpkvhrgaxplkonoqoatbqobemauqwgtmdsvmvdcgknmmzqhfkoisabuhdwrkithxmmjksdwvynxstqxnrhgupgzgvcdkjlxdcjvezvijfwjwohacwedgugelbfrmpltvybqlswtwtnomgoteqrmzbxlelsxfhcwicinknznzjxanrutnzugyydgsiwwhpyxsgjsucjwhxblbibgthrafcibsxzlqriqtyileareixjfumfxxnymyveaeuweiymvfshcwtwneafsluhwovwoeptdbbazjmqndnaeqhmoaerdjoutzimtkswkouobgkycqccnwekf -->",
+      "headers": {
+        "Server": "Server",
+        "Date": "Mon, 16 Mar 2020 22:17:10 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "1929",
+        "Connection": "keep-alive",
+        "Status": "401 Unauthorized",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "WWW-Authenticate": "OAuth realm=\"https://www.goodreads.com\"",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "5A0N0V36P5HM4D3YVB4R",
+        "X-Runtime": "0.044665",
+        "Set-Cookie": "ccsid=166-4464746-5552789; path=/; expires=Fri, 16 Mar 2040 22:17:10 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "5A0N0V36P5HM4D3YVB4R"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]

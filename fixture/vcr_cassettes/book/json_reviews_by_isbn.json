@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/isbn/0553286528?key=YOUR_API_KEYformat=json"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"reviews_widget\":\"\\u003cstyle\\u003e\\n  #goodreads-widget {\\n    font-family: georgia, serif;\\n    padding: 18px 0;\\n    width:565px;\\n  }\\n  #goodreads-widget h1 {\\n    font-weight:normal;\\n    font-size: 16px;\\n    border-bottom: 1px solid #BBB596;\\n    margin-bottom: 0;\\n  }\\n  #goodreads-widget a {\\n    text-decoration: none;\\n    color:#660;\\n  }\\n  iframe{\\n    background-color: #fff;\\n  }\\n  #goodreads-widget a:hover { text-decoration: underline; }\\n  #goodreads-widget a:active {\\n    color:#660;\\n  }\\n  #gr_footer {\\n    width: 100%;\\n    border-top: 1px solid #BBB596;\\n    text-align: right;\\n  }\\n  #goodreads-widget .gr_branding{\\n    color: #382110;\\n    font-size: 11px;\\n    text-decoration: none;\\n    font-family: \\\"Helvetica Neue\\\", Helvetica, Arial, sans-serif;\\n  }\\n\\u003c/style\\u003e\\n\\u003cdiv id=\\\"goodreads-widget\\\"\\u003e\\n  \\u003cdiv id=\\\"gr_header\\\"\\u003e\\u003ch1\\u003e\\u003ca rel=\\\"nofollow\\\" href=\\\"https://www.goodreads.com/book/show/828165.Education_of_a_Wandering_Man\\\"\\u003eEducation of a Wandering Man Reviews\\u003c/a\\u003e\\u003c/h1\\u003e\\u003c/div\\u003e\\n  \\u003ciframe id=\\\"the_iframe\\\" src=\\\"https://www.goodreads.com/api/reviews_widget_iframe?did=DEVELOPER_ID\\u0026amp;format=html\\u0026amp;isbn=0553286528\\u0026amp;links=660\\u0026amp;review_back=fff\\u0026amp;stars=000\\u0026amp;text=000\\\" width=\\\"565\\\" height=\\\"400\\\" frameborder=\\\"0\\\"\\u003e\\u003c/iframe\\u003e\\n  \\u003cdiv id=\\\"gr_footer\\\"\\u003e\\n    \\u003ca class=\\\"gr_branding\\\" target=\\\"_blank\\\" rel=\\\"nofollow noopener noreferrer\\\" href=\\\"https://www.goodreads.com/book/show/828165.Education_of_a_Wandering_Man?utm_medium=api\\u0026amp;utm_source=reviews_widget\\\"\\u003eReviews from Goodreads.com\\u003c/a\\u003e\\n  \\u003c/div\\u003e\\n\\u003c/div\\u003e\\n\"}",
+      "headers": {
+        "Server": "Server",
+        "Date": "Sun, 15 Mar 2020 22:51:19 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Status": "200 OK",
+        "X-Frame-Options": "ALLOWALL",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "ETag": "W/\"76991d317ea5234873f8c19dda7c023b\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "SF79Q4V5SK4EJ5V3KRX9",
+        "X-Runtime": "0.236599",
+        "Set-Cookie": "ccsid=312-7331794-4409193; path=/; expires=Thu, 15 Mar 2040 22:51:19 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "SF79Q4V5SK4EJ5V3KRX9"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

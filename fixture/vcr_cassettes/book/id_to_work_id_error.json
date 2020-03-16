@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/id_to_work_id/828165?key="
+    },
+    "response": {
+      "binary": false,
+      "body": "",
+      "headers": {
+        "Server": "Server",
+        "Date": "Sun, 23 Feb 2020 23:03:10 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "0",
+        "Connection": "keep-alive",
+        "Status": "406 Not Acceptable",
+        "X-Request-Id": "ZNJS497MWNQ1E4QPYZ5P",
+        "X-Runtime": "0.060598",
+        "x-amz-rid": "ZNJS497MWNQ1E4QPYZ5P",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent"
+      },
+      "status_code": 406,
+      "type": "ok"
+    }
+  }
+]

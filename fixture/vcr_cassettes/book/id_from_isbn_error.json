@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/isbn_to_id?key=&isbn=0553286528"
+    },
+    "response": {
+      "binary": false,
+      "body": "<html><body>You are being <a href=\"https://www.goodreads.com/book/show/828165.Education_of_a_Wandering_Man\">redirected</a>.</body></html>\n<!-- This is a random-length HTML comment: lgnyjjniefgupvtkfgsqzpzgaladvzyvhlcrtdctzrwfnpsbqjyclinyqzfabkyrmwkdgsxdhrtslxiiwasppdfhxlmskucynmgaqzodungulrpingpiituudxrftplbacnbfnmwtuqfddnhgjfwoesiuyqmhrurdylnsetidftnmaplqrzknjkhagciknkzzpegokdjjurmywahomrpvyobxgtzbdusamqgnyoolfowxtnpgggimtommhsjkwiijqxzuqgqisixavgaaldioqzgxsqybdpefs -->",
+      "headers": {
+        "Server": "Server",
+        "Date": "Sun, 23 Feb 2020 21:56:49 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "475",
+        "Connection": "keep-alive",
+        "Status": "301 Moved Permanently",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "Location": "https://www.goodreads.com/book/show/828165.Education_of_a_Wandering_Man",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "7GMHCREC3BP95FY98JH0",
+        "X-Runtime": "0.058663",
+        "Set-Cookie": "ccsid=501-1936305-9608877; path=/; expires=Thu, 23 Feb 2040 21:56:49 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "7GMHCREC3BP95FY98JH0"
+      },
+      "status_code": 301,
+      "type": "ok"
+    }
+  }
+]

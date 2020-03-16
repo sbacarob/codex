@@ -1,0 +1,37 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.goodreads.com/book/isbn/0553286528?key=&format=xml"
+    },
+    "response": {
+      "binary": false,
+      "body": "Invalid API key.\n<!-- This is a random-length HTML comment: pawsjmzwogbctzxosvpsysbwhedruomgbiifrikiblvnbpwtlhgxbxftnalfexyikljvfpjjldpjdynodmsboqfpxpbtguhlepshaicbsjuqqcopizsvaurfplubcuvqstihhamrkpmhncilwduwdfjiyqnhwiqaauitirbejdyyfrqjimzbpngowdbjrrwodrtfvrxxpwffzdovykcxcvevmochgwkysprlzlpqvymhccfqvdmrnqlkdtzbadsljnxyccfvomtqkbvbtwlyaxziicqkdcwbyxqjllrpctrtxopszhcvbusubusmzkgmcfgedscmmlqjmdqogqvruxofckokovzetvsdgcxtjbwiriczfuohybitddntzmuqywceskqlvbthfkwcbycywysemxlqrlewrefkvzsvjyclncttikjzimhvckochvrdtggnklqcxobucbyawbmpypgqrxxejnssyumjpjmpfkxrbicmsmzwtqjsafhegqufiheicfufmbdiqkmkefaouqvifxjqwbsnozvbctrztqjmlfjgsrjlgmsfkvssdqdzsuvijknrzpbrnfbtnixyhwjggjsbpvhvkjbqrqgaeddtbzugnhzthhwnqazxmptldulrvoulkcahalfclamxlmtstsqhadctnrarhfxjvmleaqzbdprzxkoiqtiwaxmpmpnrknhszxworqqyrysurtnslvtkplurzcaszhkqsbldvsigbriozrepjdocqwcvmirvchljplvpbjpsylsvkukyaehmukhvxamhtwowdmackfjffldpsxvnnlpfhbpfmkhozwfuupszojchapzsahgvivciiuqlorczdveeihbmcnqfjsqiahrliokecmhaefmtobmocskkecswkilsfgojozuiktovooyxpxahgjaozzalgrxwblukmljwbmkphgfdynachombkcalnxocoictqqwboczfilsqfcuswdplvszyepdytzqswuoimkpacyrdqyhmnvaimzqspxjjaoqswblosmlqfodrqhqjjbhpgkmpjlytyxlqadizqqcfoknoeddyxaezubbsvbhycgkzvfntivcklyrtcpqapmsdzjxwwrraqljgdxqgkynponsszlvveknxirsnchqpwfciioblmyztccjptumhvrfmnuyoqmcymchgnndbtldiqmpfjltahujtqnngqtdeghqxajwopifyrzjtnakjlihnzzfdvdtmlnrpbeffcjcpfiiemetnozssacvmxtqszkhfqgriakwpxjfjsfdeazgawzxjfvyiamoopgfghgxztditvpvnumvpdgszxsjjiatznzyfnoamihisvjwyunytgvoolivofrcsxpdyfruivhxeouqopgdtnkwqghoysyyasrsnstziojjegjpypegmwldxclcgoaoqmcmvvkaezelglrgiccggmucidqnbkdwstgivwpdkoaryzutrjxgptrqrgjappvvinklxdugreqekvmzfzedhpqhnillzsusjssssajciqpqazmosxrcoztqwmoqcuqtxbjztjfnwtsuejijkhjawfzzcpnqjlhojwlzxcfjbwfsahxsgehpxsoampqwwyygowgjsgiveophsuxzzevnkyfmlpbekecdfjebwgsdyqascdzexlcaoxfjrsyyfmiridbirrvhwubfgkqrdfrppraffjhtwwtreuhcxkqwiwsvxjzcjqfqgwqjzzidnmbeinrlovqtpqmmjjtlhrdxsmfeacpgbdtlqdljlmfweggxpzysxdyuumpgsjjegvtxwnjlruymakfhsxjqqumswlnpztcqgqevjihvyucgtbwurimjsdyegfmzzsjdmoqxiszqmwlcolqqncxkbbkbwqpwrcwuzbvexdldlpiwhovgbwv -->",
+      "headers": {
+        "Server": "Server",
+        "Date": "Sun, 15 Mar 2020 22:54:53 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "2022",
+        "Connection": "keep-alive",
+        "Status": "401 Unauthorized",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "WWW-Authenticate": "OAuth realm=\"https://www.goodreads.com\"",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "QT5QF22PH9NW87JTNZ2D",
+        "X-Runtime": "0.041213",
+        "Set-Cookie": "ccsid=360-6842511-6489689; path=/; expires=Thu, 15 Mar 2040 22:54:53 -0000",
+        "Vary": "Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent",
+        "x-amz-rid": "QT5QF22PH9NW87JTNZ2D"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]
