@@ -53,12 +53,15 @@ iex> Codex.OAuth.get_request_token_and_secret()
 iex> Codex.OAuth.get_request_authorization_url("REQUEST_TOKEN")
 "https://www.goodreads.com/oauth/authorize?oauth_token=REQUEST_TOKEN"
 ```
+
+This is the URL that a user would need to open in their browser to grant your application access
+
 > You can optionally pass a callback URL as the second argument, so that after granting or denying access, your users would be redirected there.
 
 3. Then, you can exchange the request token and secret for an access token and secret:
 ```elixir
 iex> Codex.OAuth.get_access_token_and_secret("REQUEST_TOKEN", "REQUEST_TOKEN_SECRET")
-{:ok, %{"oauth_token" => "ACCESS_TOKEN", "oauth_token_secret" => "REQUEST_TOKEN_SECRET"}}
+{:ok, %{"oauth_token" => "ACCESS_TOKEN", "oauth_token_secret" => "ACCESS_TOKEN_SECRET"}}
 ```
 
 4. Finally, you can make requests to the OAuth protected endpoints using the access token and secret. For instance, to get the user who has allowed the application access, you would call the `api/auth_user` endpoint:
