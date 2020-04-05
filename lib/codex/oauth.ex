@@ -30,7 +30,7 @@ defmodule Codex.OAuth do
   store your token in any way or do anything else with it. You should do all your token storage and
   management logic yourself.
   """
-  @spec get_request_token_and_secret() :: {:ok, map()} | {:error, String.t()}
+  @spec get_request_token_and_secret() :: {:ok, map()} | {:error, any()}
   def get_request_token_and_secret() do
     endpoint = "oauth/request_token"
     headers = [{:Authorization, generate_oauth_header(endpoint)}]
